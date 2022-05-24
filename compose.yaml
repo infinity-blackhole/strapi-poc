@@ -4,11 +4,13 @@ services:
     image: strapi-poc:latest
     restart: unless-stopped
     environment:
-      UPLOAD_GCS_BUCKET_NAME: machinelearningsandbox-265814-strapi
+      UPLOAD_GCS_BUCKET_NAME: sandbox-348610-strapi-upload
       DATABASE_HOST: strapi-poc-postgres
       DATABASE_NAME: strapi-poc
       DATABASE_USERNAME: strapi-poc
-      JWT_SECRET: TSXCVmhGrD3B75RDj&ri8WqocQQjd*n*zgq%u#vs%y8!BVeowbchsuZ^3x4Z
+      APP_KEYS: VW/K6zUU9U//XrOLb3/mFA==,Xx6G9QbFdKgCweDpapRs2Q==,iKqjzF1TpDwTRhKxdRlKWQ==,P2WV6LkD2EcTVmuFsXO3xA==
+      API_TOKEN_SALT: EKk7cI9PriLt0QgMrm0w6w==
+      ADMIN_JWT_SECRET: wmISOcvjZPnHthf3XeLhEQ==
       DATABASE_PASSWORD: 5kMa9%nmdKcd6@
     ports:
       - 1337:1337
