@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 FROM base AS deps
 
 # Pull all depedencies
+COPY package.json yarn.lock ./
 RUN --mount=type=cache,id=yarn-cache,sharing=locked,target=/usr/local/share/.cache/yarn \
   yarn install --frozen-lockfile --production
 
