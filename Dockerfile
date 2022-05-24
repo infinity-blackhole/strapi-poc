@@ -1,4 +1,7 @@
-FROM docker.io/library/node:17.4.0-bullseye-slim@sha256:127e7abf453152266a11ccbed1510dff5241b671855e32611d19fb348a8f4a41 AS base
+FROM docker.io/library/node@sha256:4100e31b8e6fc9bdfbceab1cbbc85f4b493888d3d8f1fda5b2d7469bb3da056d AS base
+
+# Install GYP depedencies
+RUN apt-get update -y && apt-get install -y python3
 
 # Define the current directory based on defacto community standard
 WORKDIR /usr/src/app
@@ -6,9 +9,8 @@ WORKDIR /usr/src/app
 FROM base AS deps
 
 # Pull all depedencies
-COPY package.json yarn.lock ./
-RUN --mount=type=cache,id=yarn-cache,sharing=locked,target=/usr/local/share/.cache/yarn \
-  yarn install --frozen-lockfile --production
+COPY package.json package-lock.json ./
+RUN npm ci --production
 
 FROM deps AS source
 
