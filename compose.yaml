@@ -4,7 +4,7 @@ services:
     image: strapi-poc:latest
     restart: unless-stopped
     environment:
-      GOOGLE_CLOUD_STORAGE_BUCKET_NAME: machinelearningsandbox-265814-strapi
+      UPLOAD_GCS_BUCKET_NAME: machinelearningsandbox-265814-strapi
       DATABASE_HOST: strapi-poc-postgres
       DATABASE_NAME: strapi-poc
       DATABASE_USERNAME: strapi-poc
